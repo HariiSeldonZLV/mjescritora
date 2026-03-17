@@ -1,0 +1,54 @@
+.carrito-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fdfaf6; // Color papel antiguo
+  border: 1px solid #e0dacc;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
+
+  h2 {
+    font-family: 'Serif', Georgia, serif;
+    color: #2c2c2c;
+    border-bottom: 2px solid #2c2c2c;
+    padding-bottom: 10px;
+  }
+}
+
+.item-carrito {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px dashed #ccc;
+
+  img { width: 50px; border-radius: 3px; }
+
+  .info {
+    flex-grow: 1;
+    h3 { margin: 0; font-size: 1.1rem; }
+    p { margin: 5px 0 0; color: #666; }
+  }
+}
+
+.resumen-final {
+  margin-top: 30px;
+  text-align: right;
+
+  .total {
+    font-size: 1.3rem;
+    span { font-weight: bold; color: #b22222; } // Rojo burdeos elegante
+  }
+
+  .btn-whatsapp {
+    background-color: #25d366;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:hover { transform: scale(1.05); }
+  }
+}

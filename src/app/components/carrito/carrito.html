@@ -1,0 +1,30 @@
+<div class="carrito-container">
+  <h2>📖 Tu Selección de Libros</h2>
+
+  @if (items().length > 0) {
+    <div class="lista-items">
+      @for (item of items(); track item.id) {
+        <div class="item-carrito">
+          <img [src]="item.portadaUrl" [alt]="item.titulo">
+          <div class="info">
+            <h3>{{ item.titulo }}</h3>
+            <p>{{ item.precio | currency:'CLP':'symbol-narrow' }}</p>
+          </div>
+          <button class="btn-eliminar" (click)="eliminar(item.id)">✕</button>
+        </div>
+      }
+    </div>
+
+    <div class="resumen-final">
+      <p class="total">Total a transferir: <span>{{ total() | currency:'CLP':'symbol-narrow' }}</span></p>
+      <button class="btn-whatsapp" (click)="finalizarPedido()">
+        Finalizar Pedido por WhatsApp ✍️
+      </button>
+    </div>
+  } @else {
+    <div class="carrito-vacio">
+      <p>Aún no has seleccionado ningún libro.</p>
+      <button routerLink="/libros">Ir al catálogo</button>
+    </div>
+  }
+</div>

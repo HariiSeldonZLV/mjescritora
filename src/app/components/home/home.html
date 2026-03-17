@@ -1,0 +1,68 @@
+<section class="hero-simple">
+  <div class="hero-text">
+  <h1>María José Espinoza</h1>
+  <p>Comunicación &nbsp;•&nbsp; Edición &nbsp;•&nbsp; Coaching</p>
+</div>
+</section>
+<section class="bio-section">
+  <div class="bio-container">
+    <button class="bio-toggle" (click)="toggleBio()">
+      {{ mostrarBio ? 'Ocultar Biografía' : 'Biografía de MJ Espinoza' }}
+      <span class="arrow" [class.open]="mostrarBio">▾</span>
+    </button>
+
+    @if (mostrarBio) {
+      <div class="bio-card-expand">
+        <div class="bio-grid">
+          <div class="bio-image">
+            <img src="assets/img/imagenB.jpg" alt="María José Espinoza">
+          </div>
+          <div class="bio-text">
+            <h2>María José Espinoza A.</h2>
+            <p>
+              Escritora chilena y autodidacta que ha explorado la literatura de forma independiente.
+              En 2022, debutó con su primera novela de ficción histórica titulada <strong>“Candelaria”</strong>,
+              junto con el libro infantil <strong>“La Batalla de Bellalis”</strong>.
+            </p>
+            <p>
+              Al año siguiente, en 2023, publicó su segunda novela, esta vez del género
+              futurista y ciencia ficción llamada <strong>“Matergonia”</strong>.
+            </p>
+            <p>
+              Actualmente se dedica a la asesoría de gestión editorial, acompañando a
+              otros escritores a publicar sus obras.
+            </p>
+            <button routerLink="/libros" class="btn-bio">Ver Catálogo Completo</button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="container">
+  <h2 class="section-title">Libros Destacados</h2>
+
+  <div class="books-grid">
+    @for (libro of librosDestacados; track libro.id) {
+      <div class="book-card">
+        <div class="book-image">
+          <img [src]="libro.imagen" [alt]="libro.titulo">
+        </div>
+        <div class="book-info">
+          <h3>{{ libro.titulo }}</h3>
+          <p class="genre">{{ libro.genero }}</p>
+          <p class="price">${{ libro.precio }}</p>
+
+          <div class="card-actions">
+            <button class="btn-add" (click)="agregarAlCarrito(libro)">
+              🛒 Agregar
+            </button>
+            <a [href]="libro.link" target="_blank" class="btn-amazon">Amazon</a>
+          </div>
+        </div>
+      </div>
+    }
+
+  </div>
+</section>

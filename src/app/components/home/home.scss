@@ -1,0 +1,208 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+}
+
+.section-title {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+// Grid de libros (Reemplaza a .row de Bootstrap)
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem;
+}
+
+.book-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .book-image img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+  }
+
+  .book-info {
+    padding: 1.5rem;
+    text-align: center;
+    flex-grow: 1;
+
+    h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .genre { color: #666; font-style: italic; font-size: 0.9rem; }
+    .price { font-weight: bold; font-size: 1.2rem; margin: 1rem 0; }
+  }
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  button, a {
+    padding: 0.7rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .btn-add { background: #27ae60; color: white; &:hover { background: #219150; } }
+  .btn-amazon { background: #2c3e50; color: white; &:hover { background: #1a252f; } }
+}
+
+// Hero simple sin slider
+.hero-simple {
+  height: 300px;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/assets/img/imagen1.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+
+  h1 { font-size: 3.5rem; font-family: 'Playfair Display', serif; }
+}
+body {
+  background-color: #e9e6e0 !important;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+.hero-text {
+  text-align: center;
+  color: white; // O el color que prefieras según tu fondo
+
+  h1 {
+    font-size: 3.5rem; // Nombre muy grande y con presencia
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; // Negrita para el nombre
+    margin-bottom: 0.5rem;
+    line-height: 1;
+  }
+
+  p {
+    font-size: 1.1rem; // Tamaño aumentado
+    font-family: 'Playfair Display', serif;
+    font-weight: 300; // MUY IMPORTANTE: peso ligero/fino
+    font-style: italic; // Le da un toque de elegancia literaria
+    letter-spacing: 4px; // Espaciado entre letras para que respire
+    text-transform: uppercase; // En mayúsculas se ve muy sofisticado
+    opacity: 0.9; // Un toque de transparencia lo aleja visualmente del H1
+    margin-top: 0;
+  }
+}
+.bio-section {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+
+  .bio-container {
+    width: 90%;
+    max-width: 1000px;
+  }
+
+  .bio-toggle {
+    background: none;
+    border: 1px solid #8b5e3c;
+    color: #8b5e3c;
+    padding: 1rem 2rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: rgba(139, 94, 60, 0.1);
+    }
+
+    .arrow {
+      transition: transform 0.3s;
+      &.open { transform: rotate(180deg); }
+    }
+  }
+}
+
+.bio-card-expand {
+  background: white;
+  margin-top: 1rem;
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  animation: slideDown 0.4s ease-out;
+
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .bio-image img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 10px 10px 0px #e9e6e0, 11px 11px 0px #8b5e3c;
+  }
+
+  .bio-text {
+    h2 { font-family: 'Playfair Display', serif; margin-bottom: 1.5rem; color: #333; }
+    p { line-height: 1.8; color: #555; margin-bottom: 1rem; }
+  }
+
+  .btn-bio {
+    background: #8b5e3c;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+// Animación de entrada
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .bio-card-expand .bio-grid { grid-template-columns: 1fr; }
+}
+
+ h2 {
+  font-size: 3.5rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+  color: #dc4aa4; // Aplicamos el color magenta vibrante
+
+  /* Un pequeño detalle: si quieres que se sienta más "editorial",
+     puedes añadir un suavizado de fuente */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

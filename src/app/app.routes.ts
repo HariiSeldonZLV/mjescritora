@@ -1,3 +1,15 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home';
+import { LibrosComponent } from './components/libros/libros';
+import { ServiciosComponent } from './components/servicios/servicios';
+import { NoticiasComponent } from './components/noticias/noticias';
+import { ContactoComponent } from './components/contacto/contacto';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'libros', component: LibrosComponent },
+  { path: 'servicios', component: ServiciosComponent },
+  { path: 'noticias', component: NoticiasComponent },
+  { path: 'contacto', component: ContactoComponent },
+  { path: '**', redirectTo: '' }
+];
