@@ -1,0 +1,62 @@
+<!-- app/components/footer/footer.html -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Columna 1: Logo y descripción -->
+    <div class="footer-col">
+      <img src="assets/img/logo.png" alt="MJ Espinoza" class="footer-logo" width="150" height="45">
+      <p class="footer-desc">Comunicación estratégica, servicios editoriales y coaching para potenciar tu voz y tu historia.</p>
+    </div>
+
+    <!-- Columna 2: Enlaces rápidos -->
+    <div class="footer-col">
+      <h3>Enlaces</h3>
+      <ul>
+        <li><a routerLink="/">Inicio</a></li>
+        <li><a routerLink="/libros">Libros</a></li>
+        <li><a routerLink="/servicios">Servicios</a></li>
+        <li><a routerLink="/noticias">Noticias</a></li>
+        <li><a routerLink="/contacto">Contacto</a></li>
+      </ul>
+    </div>
+
+      <!-- Columna Instagram y LinkedIn) -->
+    <div class="footer-col">
+      <h3>Sígueme</h3>
+      <div class="social-links">
+        <a [href]="socialLinks.instagram" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+          <span class="social-icon">📷</span>
+          <span>Instagram</span>
+        </a>
+        <a [href]="socialLinks.linkedin" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
+          <span class="social-icon">🔗</span>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Columna 4: Contacto rápido -->
+    <div class="footer-col">
+      <h3>Contacto</h3>
+      <ul class="contact-info">
+        <li>
+          <span class="contact-icon">📧</span>
+          <a href="mailto:contacto@mjespinoza.cl">contacto&#64;mjespinoza.cl</a>
+        </li>
+        <li>
+          <span class="contact-icon">📱</span>
+          <a href="tel:+56912345678">+56 9 1234 5678</a>
+        </li>
+        <li>
+          <span class="contact-icon">📍</span>
+          <span>Santiago, Chile</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="footer-bottom">
+    <p>&copy; {{ anio }} MJ Espinoza. Todos los derechos reservados.</p>
+    <p class="footer-credits">Diseño y desarrollo con ❤️</p>
+  </div>
+</footer>

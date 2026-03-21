@@ -1,0 +1,24 @@
+<!-- app/components/instagram-aside/instagram-aside.html -->
+<aside class="instagram-aside">
+  <div class="aside-header">
+    <span class="instagram-icon">📷</span>
+    <h3>{{ instagramUser }}</h3>
+    <p>Sígueme en Instagram</p>
+  </div>
+
+  <div class="instagram-feed">
+    <div class="feed-placeholder">
+      <span class="placeholder-icon">📸</span>
+      <p>Conecta con Instagram para ver mis últimos momentos</p>
+      <a [href]="instagramUrl" target="_blank" rel="noopener noreferrer" class="btn-instagram">
+        Seguir en Instagram
+      </a>
+    </div>
+  </div>
+
+  <div class="aside-footer">
+    <a [href]="instagramUrl" target="_blank" rel="noopener noreferrer" class="btn-follow">
+      📷 Seguir {{ instagramUser }}
+    </a>
+  </div>
+</aside>

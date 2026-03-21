@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router'; // Importamos esto para el botón "Ver Catálogo"
+import { RouterModule } from '@angular/router';
+import { InstagramAsideComponent } from '../instagram-aside/instagram-aside';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule], // Añadimos RouterModule aquí
+  imports: [CommonModule, RouterModule, InstagramAsideComponent],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })
 export class HomeComponent {
 
-  // Lógica para el desplegable de biografía
   mostrarBio: boolean = false;
 
   toggleBio() {

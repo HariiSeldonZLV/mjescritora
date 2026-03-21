@@ -1,0 +1,95 @@
+// app/components/instagram-aside/instagram-aside.scss
+.instagram-aside {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+
+  .aside-header {
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    padding: 25px 20px;
+    text-align: center;
+    color: white;
+
+    .instagram-icon {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    p {
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+  }
+
+  .instagram-feed {
+    padding: 20px;
+
+    .feed-placeholder {
+      text-align: center;
+      padding: 40px 20px;
+      background: #fafafa;
+      border-radius: 12px;
+      border: 1px solid #eee;
+
+      .placeholder-icon {
+        font-size: 3rem;
+        display: block;
+        margin-bottom: 15px;
+      }
+
+      p {
+        color: #666;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+      }
+
+      .btn-instagram {
+        display: inline-block;
+        padding: 8px 20px;
+        background: #dc4aa4;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        transition: all 0.3s;
+
+        &:hover {
+          background: #c13e8f;
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+
+  .aside-footer {
+    padding: 15px 20px 20px;
+    text-align: center;
+
+    .btn-follow {
+      display: inline-block;
+      padding: 10px 25px;
+      background: transparent;
+      border: 2px solid #dc4aa4;
+      color: #dc4aa4;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: all 0.3s;
+
+      &:hover {
+        background: #dc4aa4;
+        color: white;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
