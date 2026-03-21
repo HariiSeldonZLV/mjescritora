@@ -1,1 +1,28 @@
-<p>libros works!</p>
+<section class="libros-page">
+  <header class="libros-header">
+    <h1>Obra Literaria</h1>
+    <p>Explora las historias de María José Espinoza</p>
+  </header>
+
+  <div class="libros-container">
+    @for (libro of misLibros; track libro.id) {
+      <article class="libro-item">
+        <div class="libro-portada">
+          <img [src]="libro.imagen" [alt]="libro.titulo">
+        </div>
+
+        <div class="libro-detalles">
+          <span class="genero-tag">{{ libro.subtitulo }}</span>
+          <h2>{{ libro.titulo }}</h2>
+          <p class="descripcion">{{ libro.descripcion }}</p>
+          <p class="precio">${{ libro.precio }}</p>
+
+          <div class="acciones">
+            <button class="btn-amazon" (click)="comprar(libro)">Comprar en Amazon</button>
+            <button class="btn-carrito">🛒 Añadir al Carro</button>
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>

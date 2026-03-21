@@ -1,1 +1,27 @@
-<p>servicios works!</p>
+<section class="servicios-page">
+  <div class="header-servicios">
+    <h1>Asesoría & Consultoría</h1>
+    <p>Experiencia y técnica al servicio de tu narrativa personal</p>
+  </div>
+
+  <div class="servicios-grid">
+    @for (item of servicios; track item.titulo) {
+      <div class="servicio-card">
+        <div class="servicio-header">
+          <span class="servicio-letter">{{ item.icono }}</span>
+          <h2>{{ item.titulo }}</h2>
+        </div>
+
+        <p class="servicio-desc">{{ item.descripcion }}</p>
+
+        <ul class="servicio-list">
+          @for (detalle of item.detalles; track detalle) {
+            <li>{{ detalle }}</li>
+          }
+        </ul>
+
+        <button class="btn-consulta" routerLink="/contacto">Solicitar Información</button>
+      </div>
+    }
+  </div>
+</section>

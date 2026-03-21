@@ -1,10 +1,10 @@
 import { mergeApplicationConfig, ApplicationConfig } from '@angular/core';
 import { provideServerRendering } from '@angular/platform-server';
-import { appConfig } from './app.config';
+import { appConfig } from './app.config'; // <-- Aquí estaba el error
 
 const serverConfig: ApplicationConfig = {
   providers: [
-    provideServerRendering() // <--- Esto le da la "identidad" de servidor
+    provideServerRendering()
   ]
 };
 

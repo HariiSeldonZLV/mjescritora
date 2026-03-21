@@ -1,1 +1,115 @@
-<p>contacto works!</p>
+<div class="contacto-container">
+  <div class="contacto-header">
+    <h1>Contacto</h1>
+    <p>¿Tienes alguna pregunta o comentario? Escríbeme y te responderé lo antes posible.</p>
+  </div>
+
+  <div class="contacto-content">
+    <!-- Información de contacto -->
+    <div class="contacto-info">
+      <div class="info-card">
+        <div class="info-icon">📧</div>
+        <h3>Email</h3>
+        <p>contacto&#64;mjespinoza.cl</p>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">📱</div>
+        <h3>Teléfono</h3>
+        <p>+56 9 1234 5678</p>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">📍</div>
+        <h3>Ubicación</h3>
+        <p>Santiago, Chile</p>
+      </div>
+    </div>
+
+    <!-- Formulario de contacto -->
+    <div class="contacto-formulario">
+      <h2>Envíame un mensaje</h2>
+
+      <!-- Mensajes de éxito/error -->
+      <div *ngIf="success()" class="alert success">
+        <span>{{ success() }}</span>
+        <button class="close-btn" (click)="cerrarMensaje()">×</button>
+      </div>
+
+      <div *ngIf="error()" class="alert error">
+        <span>{{ error() }}</span>
+        <button class="close-btn" (click)="cerrarMensaje()">×</button>
+      </div>
+
+      <form (ngSubmit)="enviarMensaje()" #contactForm="ngForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre">Nombre completo *</label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              [(ngModel)]="formulario.nombre"
+              required
+              class="form-control"
+              placeholder="Tu nombre">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              [(ngModel)]="formulario.email"
+              required
+              email
+              class="form-control"
+              placeholder="tu&#64;email.com">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              [(ngModel)]="formulario.telefono"
+              class="form-control"
+              placeholder="+56 9 1234 5678">
+          </div>
+
+          <div class="form-group">
+            <label for="asunto">Asunto</label>
+            <input
+              type="text"
+              id="asunto"
+              name="asunto"
+              [(ngModel)]="formulario.asunto"
+              class="form-control"
+              placeholder="¿Sobre qué quieres hablar?">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="mensaje">Mensaje *</label>
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            [(ngModel)]="formulario.mensaje"
+            required
+            rows="6"
+            class="form-control"
+            placeholder="Escribe tu mensaje aquí..."></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="btn-enviar"
+          [disabled]="loading()">
+          {{ loading() ? 'Enviando...' : 'Enviar mensaje' }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,16 @@
+<!-- app/components/navbar/navbar.html -->
 <nav class="isabel-nav">
   <div class="nav-container">
     <div class="logo-wrapper">
-      <a routerLink="/">
-        <img src="assets/img/logo.png" alt="MJ Espinoza Logo" class="nav-logo">
-      </a>
-    </div>
+  <a routerLink="/" class="logo-link">
+    <img
+      src="assets/img/logo.png"
+      alt="MJ Espinoza - Comunicación, Coaching, Edición"
+      width="200"
+      height="60"
+      class="logo-img">
+  </a>
+</div>
 
     <ul class="nav-links">
       <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a></li>
@@ -12,6 +18,15 @@
       <li><a routerLink="/servicios" routerLinkActive="active">Servicios</a></li>
       <li><a routerLink="/noticias" routerLinkActive="active">Noticias</a></li>
       <li><a routerLink="/contacto" routerLinkActive="active">Contacto</a></li>
+
+      <li class="admin-access">
+        <ng-container *ngIf="currentUser(); else loginLink">
+          <a (click)="logout()" class="logout-link" style="cursor: pointer;">Salir</a>
+        </ng-container>
+        <ng-template #loginLink>
+          <a routerLink="/admin" routerLinkActive="active">Acceso</a>
+        </ng-template>
+      </li>
     </ul>
   </div>
 </nav>

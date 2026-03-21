@@ -1,0 +1,99 @@
+.servicios-page {
+  padding: 5rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .header-servicios {
+    text-align: center;
+    margin-bottom: 5rem;
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: #dc4aa4;
+    }
+    p {
+      font-style: italic;
+      color: #666;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+}
+
+.servicio-card {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  border-top: 4px solid #dc4aa4; // Detalle magenta en la parte superior
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+
+  .servicio-header {
+    margin-bottom: 1.5rem;
+    .servicio-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: rgba(220, 74, 164, 0.8); // Color del ícono
+      font-weight: bold;
+      display: block;
+      margin-bottom: -1rem;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #333;
+    }
+  }
+
+  .servicio-desc {
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+  }
+
+  .servicio-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2.5rem;
+    li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #dc4aa4;
+      font-size: 0.95rem;
+      color: #8b5e3c; // Color tierra para los detalles
+      &::before {
+        content: "• ";
+        color: #dc4aa4;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  .btn-consulta {
+    background: transparent;
+    border: 1px solid #333;
+    padding: 1rem;
+    font-family: 'Playfair Display', serif;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      background: #333;
+      color: white;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .servicios-page { padding: 3rem 1rem; }
+}

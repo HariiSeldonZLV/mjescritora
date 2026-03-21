@@ -1,26 +1,36 @@
-import { Component, inject, computed } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { CarritoService } from '../../services/carrito'; // <-- Ruta corregida
+import { Injectable, signal } from '@angular/core';
 
-@Component({
-  selector: 'app-carrito',
-  standalone: true,
-  imports: [CommonModule, RouterLink],
-  templateUrl: './carrito.html',
-  styleUrls: ['./carrito.scss']
+@Injectable({
+  providedIn: 'root'
 })
-export class CarritoComponent {
-  private carritoService = inject(CarritoService);
+export class CarritoService {
+  // Definimos el signal con un array vacío
+  items = signal<any[]>([]);
 
-  items = this.carritoService.items;
-  total = computed(() => this.carritoService.obtenerTotal());
-
-  eliminar(id: string) {
-    this.carritoService.eliminar(id);
+  agregarLibro(libro: any) {
+    // Especificamos que 'prev' es un array
+    this.items.update((prev: any[]) => [...prev, libro]);
   }
 
-  finalizarPedido() {
-    this.carritoService.generarPedidoWhatsApp();
+  eliminarLibro(id: number) {
+    // Especificamos tipos para evitar el error TS7006
+    this.items.update((prev: any[]) => prev.filter((item: any) => item.id !== id));
+  }
+
+  obtenerTotal() {
+    // Especificamos tipos en el reduce
+    return this.items().reduce((acc: number, item: any) => acc + item.precio, 0);
+  }
+
+  enviarWhatsApp(telefono: string) {
+    const mensaje = encodeURIComponent(
+      `Hola! Me interesa comprar estos libros:\n` +
+      this.items().map((l: any) => `- ${l.titulo} ($${l.precio})`).join('\n') +
+      `\n\nTotal: $${this.obtenerTotal()}`
+    );
+
+    // El error de 'window' se soluciona asegurando que el lib 'dom' esté en tsconfig
+    // o usando (window as any) si persiste el bloqueo
+    window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
   }
 }

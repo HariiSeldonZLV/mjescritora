@@ -1,1 +1,107 @@
-<p>noticias works!</p>
+<!-- app/components/noticias/noticias.html -->
+<div class="noticias-container">
+  <div class="noticias-header">
+    <h1>📰 Noticias y Eventos</h1>
+    <p>Mantente al día con las últimas novedades</p>
+  </div>
+
+  <!-- Formulario para publicar noticias (solo visible para admin) -->
+  <div *ngIf="usuarioAutenticado()" class="admin-form-card">
+    <div class="card-header">
+      <h2>✍️ {{ editando ? 'Editar Noticia' : 'Publicar Nueva Noticia' }}</h2>
+    </div>
+
+    <div *ngIf="error()" class="alert error">
+      {{ error() }}
+    </div>
+
+    <div class="form-group">
+      <label for="titulo">Título de la noticia *</label>
+      <input
+        id="titulo"
+        type="text"
+        [(ngModel)]="nuevaNoticia.titulo"
+        placeholder="Ej: Lanzamiento de nuevo libro"
+        class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="resumen">Resumen o contenido *</label>
+      <textarea
+        id="resumen"
+        [(ngModel)]="nuevaNoticia.resumen"
+        placeholder="Describe la noticia o evento..."
+        rows="5"
+        class="form-control"></textarea>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="categoria">Categoría</label>
+        <select id="categoria" [(ngModel)]="nuevaNoticia.categoria" class="form-control">
+          <option value="📅 Evento">📅 Evento</option>
+          <option value="📰 Noticia">📰 Noticia</option>
+          <option value="📢 Anuncio">📢 Anuncio</option>
+          <option value="🏆 Logro">🏆 Logro</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="fecha">Fecha</label>
+        <input
+          id="fecha"
+          type="text"
+          [(ngModel)]="nuevaNoticia.fecha"
+          class="form-control"
+          disabled>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button (click)="guardarNoticia()" class="btn-primary" [disabled]="loading()">
+        {{ loading() ? 'Publicando...' : (editando ? 'Actualizar' : 'Publicar Noticia') }}
+      </button>
+      <button *ngIf="editando" (click)="limpiarFormulario()" class="btn-secondary">
+        Cancelar
+      </button>
+    </div>
+  </div>
+
+  <!-- Lista de noticias -->
+  <div *ngIf="loading()" class="loading-spinner">
+    <div class="spinner"></div>
+    <p>Cargando noticias...</p>
+  </div>
+
+  <div *ngIf="!loading() && noticias().length === 0" class="empty-state">
+    <div class="empty-icon">📭</div>
+    <h3>No hay noticias aún</h3>
+    <p *ngIf="usuarioAutenticado()">¡Publica tu primera noticia usando el formulario!</p>
+    <p *ngIf="!usuarioAutenticado()">Vuelve pronto para ver las novedades.</p>
+  </div>
+
+  <div class="noticias-grid">
+    <div *ngFor="let noticia of noticias()" class="noticia-card" [class]="'categoria-' + noticia.categoria.toLowerCase()">
+      <div class="noticia-badge">
+        <span class="categoria">{{ noticia.categoria }}</span>
+      </div>
+
+      <div class="noticia-content">
+        <h3>{{ noticia.titulo }}</h3>
+        <p>{{ noticia.resumen }}</p>
+
+       <div class="noticia-footer">
+  <span class="fecha">
+    📅 {{ noticia.fechaFormateada || noticia.fecha }}
+  </span>
+
+  <div *ngIf="usuarioAutenticado()" class="admin-actions">
+    <button (click)="eliminarNoticia(noticia.id)" class="btn-delete" title="Eliminar noticia">
+      🗑️ Eliminar
+    </button>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
