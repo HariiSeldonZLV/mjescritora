@@ -11,8 +11,11 @@ export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'libros', component: LibrosComponent },
   { path: 'servicios', component: ServiciosComponent },
-    { path: 'noticias', component: NoticiasComponent, canActivate: [authGuard] },
-  { path: 'noticias', component: NoticiasComponent },
+  {
+    path: 'noticias',
+    loadComponent: () => import('./components/noticias/noticias').then(m => m.NoticiasComponent),
+    canActivate: [authGuard]
+  },
   { path: 'contacto', component: ContactoComponent },
   { path: 'admin', component: LoginComponent },
   { path: '**', redirectTo: '' }

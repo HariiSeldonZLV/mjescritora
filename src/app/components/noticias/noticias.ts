@@ -1,6 +1,6 @@
 // app/components/noticias/noticias.ts
 import { Component, inject, PLATFORM_ID, OnInit, signal } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { NgIf, NgFor, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FirestoreService } from '../../services/firestore.service';
 import { AuthService } from '../../services/auth.service';
@@ -10,7 +10,7 @@ import { getApp } from 'firebase/app';
 @Component({
   selector: 'app-noticias',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [NgIf, NgFor, FormsModule],
   templateUrl: './noticias.html',
   styleUrl: './noticias.scss'
 })
