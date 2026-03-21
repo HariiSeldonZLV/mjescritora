@@ -1,6 +1,4 @@
-// app/components/home/home.scss
 
-// Variables locales (heredan de styles.scss)
 $primary-color: #dc4aa4;
 $bg-color: #e9e6e0;
 $text-dark: #2c3e50;
@@ -191,14 +189,14 @@ $white: #ffffff;
     }
 
     .btn-add {
-      background: $primary-color;
-      color: $white;
+  background: $primary-color;
+  color: $white;
 
-      &:hover {
-        background: darken($primary-color, 10%);
-        transform: translateY(-2px);
-      }
-    }
+  &:hover {
+    background: rgba($primary-color, 0.85); // ← Cambiar aquí
+    transform: translateY(-2px);
+  }
+}
 
     .btn-amazon {
       background: #2c3e50;
@@ -330,11 +328,11 @@ $white: #ffffff;
     border-radius: 40px;
     transition: all 0.3s;
 
-    &:hover {
-      background: darken($primary-color, 10%);
-      transform: translateY(-2px);
-    }
+      &:hover {
+    background: rgba($primary-color, 0.85); // ← Cambiar aquí
+    transform: translateY(-2px);
   }
+}
 }
 
 // Animación
