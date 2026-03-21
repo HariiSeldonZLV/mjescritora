@@ -8,7 +8,7 @@ $white: #ffffff;
 .hero-simple {
   height: 70vh;
   min-height: 500px;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),
+  background: linear-gradient(rgba(33, 32, 32, 0.6), rgba(44, 43, 43, 0.5)),
               url('/assets/img/imagen2.jpg');
   background-size: cover;
   background-position: center 30%;
@@ -60,7 +60,7 @@ $white: #ffffff;
   margin: 0 auto;
   padding: 0 20px;
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: 1fr 360px;
   gap: 50px;
   margin-bottom: 60px;
 
@@ -75,6 +75,8 @@ $white: #ffffff;
 }
 
 .sidebar {
+  min-width: 0; // Permite que el contenido se ajuste
+  overflow-x: visible;
   @media (max-width: 992px) {
     order: -1;
   }

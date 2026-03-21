@@ -1,94 +1,162 @@
 // app/components/instagram-aside/instagram-aside.scss
+$primary-color: #dc4aa4;
+$primary-color-dark: #c13e8f;
+$primary-color-light: #e87cb3;
+$white: #ffffff;
+
 .instagram-aside {
-  background: white;
-  border-radius: 16px;
+  background: $white;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   margin-bottom: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
 
   .aside-header {
-    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
-    padding: 25px 20px;
+    background: linear-gradient(135deg, $primary-color-dark, $primary-color, $primary-color-light);
+    padding: 20px 15px;
     text-align: center;
-    color: white;
+    color: $white;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: rgba($white, 0.5);
+    }
 
     .instagram-icon {
-      font-size: 2rem;
+      font-size: 1.8rem;
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
     }
 
     h3 {
-      font-size: 1.3rem;
-      margin-bottom: 5px;
-      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: $white;
+      word-break: break-word;
+
+      &::after {
+        display: none;
+      }
     }
 
     p {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       opacity: 0.9;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 0;
     }
   }
 
-  .instagram-feed {
+.instagram-feed {
     padding: 20px;
+    width: 100%;
+    overflow-x: visible;
 
-    .feed-placeholder {
-      text-align: center;
-      padding: 40px 20px;
-      background: #fafafa;
-      border-radius: 12px;
-      border: 1px solid #eee;
+    // Contenedor para el embed
+    .instagram-media-container {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
 
-      .placeholder-icon {
-        font-size: 3rem;
-        display: block;
-        margin-bottom: 15px;
-      }
+    // Estilos para el embed de Instagram
+     .instagram-media {
+      margin: 0 auto !important;
+      max-width: 100% !important;
+      min-width: 100% !important;
+      width: 100% !important;
+      border-radius: 12px !important;
+      box-sizing: border-box !important;
 
-      p {
-        color: #666;
-        margin-bottom: 20px;
-        font-size: 0.9rem;
-      }
-
-      .btn-instagram {
-        display: inline-block;
-        padding: 8px 20px;
-        background: #dc4aa4;
-        color: white;
-        text-decoration: none;
-        border-radius: 25px;
-        font-size: 0.9rem;
-        transition: all 0.3s;
-
-        &:hover {
-          background: #c13e8f;
-          transform: translateY(-2px);
-        }
+       div, iframe, blockquote {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
       }
     }
   }
 
   .aside-footer {
-    padding: 15px 20px 20px;
+    padding: 0 20px 20px;
     text-align: center;
 
-    .btn-follow {
-      display: inline-block;
-      padding: 10px 25px;
-      background: transparent;
-      border: 2px solid #dc4aa4;
-      color: #dc4aa4;
-      text-decoration: none;
-      border-radius: 30px;
+     .btn-follow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px;
+      background: $primary-color;
+      border: none;
+      border-radius: 40px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
       font-weight: 500;
-      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: $white;
+      text-decoration: none;
+      transition: all 0.3s ease;
 
       &:hover {
-        background: #dc4aa4;
-        color: white;
+        background: $primary-color-dark;
         transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+      }
+    }
+  }
+}
+
+// Responsive para móvil
+@media (max-width: 768px) {
+  .instagram-aside {
+    .aside-header {
+      padding: 15px 12px;
+
+      .instagram-icon {
+        font-size: 1.5rem;
+      }
+
+      h3 {
+        font-size: 0.9rem;
+      }
+
+      p {
+        font-size: 0.6rem;
+      }
+    }
+
+    .instagram-feed {
+      padding: 12px;
+    }
+
+    .aside-footer {
+      padding: 0 12px 15px;
+
+      .btn-follow {
+        padding: 8px 12px;
+        font-size: 0.6rem;
+        white-space: normal;
+        word-break: break-word;
       }
     }
   }

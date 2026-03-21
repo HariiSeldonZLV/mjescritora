@@ -1,108 +1,178 @@
-.libros-page {
-  padding: 4rem 1rem;
-  min-height: 80vh;
+// app/components/libros/libros.scss
+$primary-color: #dc4aa4;
+$primary-color-dark: #c13e8f;
+$bg-color: #e9e6e0;
+$text-dark: #2c3e50;
+$white: #ffffff;
 
-  .libros-header {
-    text-align: center;
-    margin-bottom: 5rem;
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      color: #dc4aa4;
+.libros-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: $bg-color;
+  min-height: calc(100vh - 200px);
+}
+
+.libros-header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: $primary-color;
+    margin-bottom: 0.5rem;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: $primary-color;
+      margin: 0.8rem auto 0;
     }
-    p {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      color: #666;
-    }
+  }
+
+  p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: $text-dark;
+    margin-top: 1rem;
   }
 }
 
 .libros-container {
-  max-width: 1000px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 6rem;
+  gap: 3rem;
 }
 
 .libro-item {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 4rem;
-  align-items: center;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  background: $white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  // Efecto de espejo: cada segundo libro la imagen va a la derecha
-  &:nth-child(even) {
-    direction: rtl;
-    .libro-detalles { direction: ltr; }
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   }
 
-  .libro-portada img {
-    width: 100%;
-    border-radius: 4px;
-    box-shadow: 20px 20px 60px rgba(0,0,0,0.1);
-    transition: transform 0.4s ease;
-    &:hover { transform: scale(1.02); }
-  }
-
-  .libro-detalles {
-    .genero-tag {
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      color: #8b5e3c;
-      font-weight: bold;
-    }
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      margin: 1rem 0;
-      color: #333;
-    }
-    .descripcion {
-      line-height: 1.8;
-      color: #555;
-      margin-bottom: 1.5rem;
-    }
-    .precio {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #dc4aa4;
-      margin-bottom: 2rem;
-    }
-  }
-}
-
-.acciones {
-  display: flex;
-  gap: 1rem;
-  button {
-    padding: 0.8rem 1.5rem;
-    border: none;
-    cursor: pointer;
-    font-family: 'Playfair Display', serif;
-    transition: 0.3s;
-    &.btn-amazon {
-      background: #333;
-      color: white;
-      &:hover { background: #000; }
-    }
-    &.btn-carrito {
-      background: transparent;
-      border: 1px solid #dc4aa4;
-      color: #dc4aa4;
-      &:hover { background: #dc4aa4; color: white; }
-    }
-  }
-}
-
-// Responsivo para móviles
-@media (max-width: 768px) {
-  .libro-item {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    text-align: center;
-    gap: 2rem;
-    &:nth-child(even) { direction: ltr; }
+    gap: 1rem;
+  }
+}
+
+.libro-portada {
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+.libro-detalles {
+  padding: 2rem 2rem 2rem 0;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  .genero-tag {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $primary-color;
+    background: rgba($primary-color, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $text-dark;
+    margin-bottom: 1rem;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $primary-color;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .descripcion {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #5a6c7e;
+    margin-bottom: 1.5rem;
+  }
+
+  .precio {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $primary-color;
+    margin-bottom: 1.5rem;
+  }
+
+  .acciones {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    .btn-amazon, .btn-carrito {
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .btn-amazon {
+      background: $primary-color;
+      color: $white;
+
+      &:hover {
+        background: $primary-color-dark;
+        transform: translateY(-2px);
+      }
+    }
+
+    .btn-carrito {
+      background: transparent;
+      border: 2px solid $primary-color;
+      color: $primary-color;
+
+      &:hover {
+        background: $primary-color;
+        color: $white;
+        transform: translateY(-2px);
+      }
+    }
   }
 }

@@ -1,3 +1,10 @@
+// app/components/servicios/servicios.scss
+$primary-color: #dc4aa4;
+$primary-color-dark: #c13e8f;
+$bg-color: #e9e6e0;
+$text-dark: #2c3e50;
+$white: #ffffff;
+
 .servicios-page {
   padding: 5rem 1rem;
   max-width: 1200px;
@@ -5,15 +12,30 @@
 
   .header-servicios {
     text-align: center;
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
+
     h1 {
       font-family: 'Playfair Display', serif;
       font-size: 3rem;
-      color: #dc4aa4;
+      font-weight: 600;
+      color: $primary-color;
+      margin-bottom: 1rem;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 3px;
+        background: $primary-color;
+        margin: 0.8rem auto 0;
+      }
     }
+
     p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
       font-style: italic;
-      color: #666;
+      color: $text-dark;
       letter-spacing: 1px;
     }
   }
@@ -22,59 +44,70 @@
 .servicios-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .servicio-card {
-  background: white;
-  padding: 3rem 2rem;
-  border-radius: 4px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-  border-top: 4px solid #dc4aa4; // Detalle magenta en la parte superior
+  background: $white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border-top: 4px solid $primary-color;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   }
 
   .servicio-header {
     margin-bottom: 1.5rem;
+    text-align: center;
+
     .servicio-letter {
       font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      color: rgba(220, 74, 164, 0.8); // Color del ícono
+      font-size: 3rem;
+      color: $primary-color;
       font-weight: bold;
       display: block;
-      margin-bottom: -1rem;
+      margin-bottom: 0.5rem;
     }
+
     h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      color: #333;
+      font-size: 1.5rem;
+      color: $text-dark;
+      margin: 0;
     }
   }
 
   .servicio-desc {
+    font-family: 'Cormorant Garamond', serif;
     line-height: 1.7;
-    color: #555;
-    margin-bottom: 2rem;
+    color: #5a6c7e;
+    margin-bottom: 1.5rem;
     flex-grow: 1;
+    text-align: center;
   }
 
   .servicio-list {
     list-style: none;
     padding: 0;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+
     li {
+      font-family: 'Inter', sans-serif;
       padding: 0.5rem 0;
-      border-bottom: 1px solid #dc4aa4;
-      font-size: 0.95rem;
-      color: #8b5e3c; // Color tierra para los detalles
+      border-bottom: 1px solid rgba($primary-color, 0.3);
+      font-size: 0.9rem;
+      color: $text-dark;
+      text-align: center;
+
       &::before {
-        content: "• ";
-        color: #dc4aa4;
+        content: "✦";
+        color: $primary-color;
         margin-right: 0.5rem;
       }
     }
@@ -82,18 +115,36 @@
 
   .btn-consulta {
     background: transparent;
-    border: 1px solid #333;
-    padding: 1rem;
-    font-family: 'Playfair Display', serif;
+    border: 2px solid $primary-color;
+    padding: 0.8rem;
+    border-radius: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $primary-color;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s;
+
     &:hover {
-      background: #333;
-      color: white;
+      background: $primary-color;
+      color: $white;
+      transform: translateY(-2px);
     }
   }
 }
 
 @media (max-width: 768px) {
-  .servicios-page { padding: 3rem 1rem; }
+  .servicios-page {
+    padding: 3rem 1rem;
+
+    .header-servicios h1 {
+      font-size: 2.2rem;
+    }
+  }
+
+  .servicios-grid {
+    gap: 1.5rem;
+  }
 }

@@ -1,26 +1,36 @@
-/* app/components/login/login.scss */
+// app/components/login/login.scss
+$primary-color: #dc4aa4;
+$primary-color-dark: #c13e8f;
+$bg-color: #e9e6e0;
+$white: #ffffff;
+
 .login-container {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, $primary-color-dark, $primary-color);
   padding: 20px;
 }
 
 .login-card {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  background: $white;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   padding: 40px;
   width: 100%;
   max-width: 400px;
 
   h2 {
     text-align: center;
-    color: #333;
+    font-family: 'Playfair Display', serif;
+    color: $primary-color;
     margin-bottom: 30px;
-    font-size: 24px;
+    font-size: 1.8rem;
+
+    &::after {
+      display: none;
+    }
   }
 }
 
@@ -30,21 +40,27 @@
   label {
     display: block;
     margin-bottom: 8px;
-    color: #333;
+    color: $text-dark;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
     font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
   .form-control {
     width: 100%;
-    padding: 12px;
+    padding: 12px 15px;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s;
+    border-radius: 40px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s;
 
     &:focus {
       outline: none;
-      border-color: #667eea;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
     }
   }
 }
@@ -52,28 +68,33 @@
 .error-message {
   background: #fee;
   color: #c33;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 12px;
+  border-radius: 40px;
   margin-bottom: 20px;
-  font-size: 14px;
+  font-size: 0.85rem;
   text-align: center;
+  font-family: 'Inter', sans-serif;
 }
 
 .btn-login {
   width: 100%;
-  padding: 12px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  padding: 14px;
+  background: $primary-color;
+  color: $white;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 40px;
+  font-size: 0.85rem;
   font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.3s;
 
   &:hover:not(:disabled) {
+    background: $primary-color-dark;
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba($primary-color, 0.3);
   }
 
   &:disabled {
