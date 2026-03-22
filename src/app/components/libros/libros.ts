@@ -21,7 +21,7 @@ export class LibrosComponent {
       descripcion: 'Una inmersión en las raíces y los secretos del pasado. Debut literario de ficción histórica que explora la identidad chilena.',
       precio: 19990,
       imagen: 'assets/img/imagen1.jpg',
-      amazonLink: 'https://www.amazon.com.mx/...'
+      amazonLink: 'https://www.amazon.com.mx/Candelaria-María-Jose-Espinoza-ebook/dp/B09WW489FM?ref_=ast_author_dp&th=1&psc=1'
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ export class LibrosComponent {
       descripcion: 'Parte de la colección "Cuentos Infames". Un relato que mantiene la tensión hasta la última página.',
       precio: 9990,
       imagen: 'assets/img/imagen2.jpg',
-      amazonLink: 'https://www.amazon.com.mx/...'
+      amazonLink: 'https://www.amazon.com.mx/El-Testigo-colección-Cuentos-Infames/dp/B0F1KMB9MR?ref_=ast_author_dp&th=1&psc=1'
     },
     {
       id: 3,
@@ -39,7 +39,7 @@ export class LibrosComponent {
       descripcion: 'Un viaje épico para los más jóvenes, lleno de valor, fantasía y descubrimientos inolvidables.',
       precio: 6990,
       imagen: 'assets/img/imagen3.jpg',
-      amazonLink: 'https://www.amazon.com.mx/...'
+      amazonLink: 'https://www.amazon.com.mx/Batalla-Bellalis-Spanish-Maria-Espinoza/dp/B0BM898VW9?ref_=ast_author_dp&th=1&psc=1'
     },
     {
       id: 4,
@@ -48,7 +48,7 @@ export class LibrosComponent {
       descripcion: 'Una visión futurista que cuestiona nuestra realidad actual a través de los ojos del mañana.',
       precio: 17990,
       imagen: 'assets/img/imagen4.jpg',
-      amazonLink: 'https://www.amazon.com.mx/...'
+      amazonLink: 'https://www.amazon.com.mx/Matergonia-Spanish-María-José-Espinoza/dp/B0C1JDKNPT/ref=sr_1_1?__mk_es_MX=ÅMÅŽÕÑ&crid=XZ7SS8CZZR5A&dib=eyJ2IjoiMSJ9.g224s1EQVhfqH1LlvChpHQ.nRXCr4OSAgoyKCjsuBWAE7rw8IBrPfv06rl0bxrsQ48&dib_tag=se&keywords=matergonia&qid=1774223356&s=books&sprefix=matergonia%2Cstripbooks%2C243&sr=1-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b'
     }
   ];
 
