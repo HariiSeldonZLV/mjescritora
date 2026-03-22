@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+// app/components/libros/libros.ts
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CarritoService } from '../../services/carrito.service'; // ← Ruta corregida
 
 @Component({
   selector: 'app-libros',
@@ -9,6 +11,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './libros.scss'
 })
 export class LibrosComponent {
+  private carritoService = inject(CarritoService);
+
   misLibros = [
     {
       id: 1,
@@ -50,5 +54,10 @@ export class LibrosComponent {
 
   comprar(libro: any) {
     window.open(libro.amazonLink, '_blank');
+  }
+
+  agregarAlCarrito(libro: any) {
+    this.carritoService.agregarLibro(libro);
+    console.log('Agregado al carrito:', libro.titulo);
   }
 }

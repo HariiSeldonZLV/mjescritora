@@ -1,36 +1,45 @@
-import { Injectable, signal } from '@angular/core';
+// app/components/carrito/carrito.ts
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CarritoService } from '../../services/carrito.service';
+import { RouterModule } from '@angular/router';
 
-@Injectable({
-  providedIn: 'root'
+@Component({
+  selector: 'app-carrito',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+  templateUrl: './carrito.html',
+  styleUrl: './carrito.scss'
 })
-export class CarritoService {
-  // Definimos el signal con un array vacío
-  items = signal<any[]>([]);
+export class CarritoComponent {
+  private carritoService = inject(CarritoService);
 
-  agregarLibro(libro: any) {
-    // Especificamos que 'prev' es un array
-    this.items.update((prev: any[]) => [...prev, libro]);
+  items = this.carritoService.items;
+  total = this.carritoService.obtenerTotal;
+  cantidadItems = this.carritoService.obtenerCantidadItems;
+
+  telefonoWhatsApp = '56991524369';
+
+  eliminarItem(id: number) {
+    this.carritoService.eliminarLibro(id);
   }
 
-  eliminarLibro(id: number) {
-    // Especificamos tipos para evitar el error TS7006
-    this.items.update((prev: any[]) => prev.filter((item: any) => item.id !== id));
+  actualizarCantidad(id: number, cantidad: number) {
+    this.carritoService.actualizarCantidad(id, cantidad);
   }
 
-  obtenerTotal() {
-    // Especificamos tipos en el reduce
-    return this.items().reduce((acc: number, item: any) => acc + item.precio, 0);
+  vaciarCarrito() {
+    if (confirm('¿Estás seguro de vaciar el carrito?')) {
+      this.carritoService.vaciarCarrito();
+    }
   }
 
-  enviarWhatsApp(telefono: string) {
-    const mensaje = encodeURIComponent(
-      `Hola! Me interesa comprar estos libros:\n` +
-      this.items().map((l: any) => `- ${l.titulo} ($${l.precio})`).join('\n') +
-      `\n\nTotal: $${this.obtenerTotal()}`
-    );
-
-    // El error de 'window' se soluciona asegurando que el lib 'dom' esté en tsconfig
-    // o usando (window as any) si persiste el bloqueo
-    window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
+  generarPedido() {
+    if (this.items().length === 0) {
+      alert('El carrito está vacío');
+      return;
+    }
+    const url = this.carritoService.generarMensajeWhatsApp(this.telefonoWhatsApp);
+    window.open(url, '_blank');
   }
 }

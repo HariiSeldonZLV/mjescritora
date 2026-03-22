@@ -18,6 +18,12 @@
       <li><a routerLink="/servicios" routerLinkActive="active">Servicios</a></li>
       <li><a routerLink="/noticias" routerLinkActive="active">Noticias</a></li>
       <li><a routerLink="/contacto" routerLinkActive="active">Contacto</a></li>
+      <li>
+  <a routerLink="/carrito" routerLinkActive="active">
+    🛒 Carrito <span *ngIf="carritoService.obtenerCantidadItems() > 0" class="carrito-badge">{{ carritoService.obtenerCantidadItems() }}</span>
+  </a>
+</li>
+
 
       <li class="admin-access">
         <ng-container *ngIf="currentUser(); else loginLink">
@@ -27,6 +33,9 @@
           <a routerLink="/admin" routerLinkActive="active">Acceso</a>
         </ng-template>
       </li>
+      <li class="admin-access" *ngIf="currentUser()">
+  <a routerLink="/mensajes" routerLinkActive="active">📬 Mensajes</a>
+</li>
     </ul>
   </div>
 </nav>

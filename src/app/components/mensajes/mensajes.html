@@ -1,0 +1,72 @@
+<!-- app/components/mensajes/mensajes.html -->
+<div class="mensajes-container">
+  <div class="header">
+    <h1>📬 Mensajes de Contacto</h1>
+    <button class="btn-refresh" (click)="recargar()" [disabled]="loading()">
+      🔄 {{ loading() ? 'Cargando...' : 'Recargar' }}
+    </button>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="loading()" class="loading">
+    <div class="spinner"></div>
+    <p>Cargando mensajes...</p>
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="error()" class="error-message">
+    {{ error() }}
+    <button (click)="recargar()">Reintentar</button>
+  </div>
+
+  <!-- Sin mensajes -->
+  <div *ngIf="!loading() && mensajes().length === 0" class="empty-state">
+    <div class="empty-icon">📭</div>
+    <h3>No hay mensajes aún</h3>
+    <p>Los mensajes de contacto aparecerán aquí cuando los visitantes te escriban.</p>
+  </div>
+
+  <!-- Lista de mensajes -->
+  <div class="mensajes-grid">
+    <div *ngFor="let mensaje of mensajes()" class="mensaje-card" [class.leido]="mensaje.leido">
+      <div class="mensaje-header">
+        <div class="info">
+          <div class="nombre">
+            <strong>{{ mensaje.nombre }}</strong>
+            <span class="email">{{ mensaje.email }}</span>
+          </div>
+          <div class="fecha">
+            📅 {{ formatearFecha(mensaje.timestamp) }}
+          </div>
+        </div>
+        <div class="estado">
+          <span *ngIf="!mensaje.leido" class="badge-nuevo">Nuevo</span>
+          <span *ngIf="mensaje.leido" class="badge-leido">Leído</span>
+          <button
+            *ngIf="!mensaje.leido"
+            (click)="marcarComoLeido(mensaje.id, mensaje.leido)"
+            class="btn-leido">
+            ✓ Marcar como leído
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="mensaje.asunto" class="mensaje-asunto">
+        <strong>Asunto:</strong> {{ mensaje.asunto }}
+      </div>
+
+      <div class="mensaje-mensaje">
+        <strong>Mensaje:</strong>
+        <p>{{ mensaje.mensaje }}</p>
+      </div>
+
+      <div *ngIf="mensaje.telefono" class="mensaje-telefono">
+        <strong>📞 Teléfono:</strong> {{ mensaje.telefono }}
+      </div>
+
+      <div *ngIf="mensaje.ip" class="mensaje-metadata">
+        <small>IP: {{ mensaje.ip }} | Navegador: {{ mensaje.userAgent?.substring(0, 50) }}...</small>
+      </div>
+    </div>
+  </div>
+</div>

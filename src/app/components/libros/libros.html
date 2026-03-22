@@ -1,3 +1,4 @@
+<!-- app/components/libros/libros.html -->
 <section class="libros-page">
   <header class="libros-header">
     <h1>Obra Literaria</h1>
@@ -15,11 +16,11 @@
           <span class="genero-tag">{{ libro.subtitulo }}</span>
           <h2>{{ libro.titulo }}</h2>
           <p class="descripcion">{{ libro.descripcion }}</p>
-          <p class="precio">${{ libro.precio }}</p>
+          <p class="precio">${{ libro.precio.toLocaleString('es-CL') }}</p>
 
           <div class="acciones">
             <button class="btn-amazon" (click)="comprar(libro)">Comprar en Amazon</button>
-            <button class="btn-carrito">🛒 Añadir al Carro</button>
+            <button class="btn-carrito" (click)="agregarAlCarrito(libro)">🛒 Añadir al Carro</button>
           </div>
         </div>
       </article>

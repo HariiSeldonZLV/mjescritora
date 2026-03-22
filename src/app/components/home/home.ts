@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+// app/components/home/home.ts
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { InstagramAsideComponent } from '../instagram-aside/instagram-aside';
+import { CarritoService } from '../../services/carrito.service';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +13,7 @@ import { InstagramAsideComponent } from '../instagram-aside/instagram-aside';
   styleUrl: './home.scss'
 })
 export class HomeComponent {
+  private carritoService = inject(CarritoService);
 
   mostrarBio: boolean = false;
 
@@ -18,7 +21,6 @@ export class HomeComponent {
     this.mostrarBio = !this.mostrarBio;
   }
 
-  // Tu lista de libros destacados
   librosDestacados = [
     { id: 1, titulo: 'Candelaria', genero: 'Novela histórica', precio: 19990, imagen: 'assets/img/imagen1.jpg', link: 'https://www.amazon.com.mx/...' },
     { id: 2, titulo: 'El Testigo', genero: 'Misterio y suspenso', precio: 9990, imagen: 'assets/img/imagen2.jpg', link: 'https://www.amazon.com.mx/...' },
@@ -27,6 +29,7 @@ export class HomeComponent {
   ];
 
   agregarAlCarrito(libro: any) {
+    this.carritoService.agregarLibro(libro);
     console.log('Agregado al carrito:', libro.titulo);
   }
 }

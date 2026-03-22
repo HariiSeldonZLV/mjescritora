@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { CarritoService } from '../../services/carrito.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +14,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavbarComponent {
   private authService = inject(AuthService);
+  public carritoService = inject(CarritoService);
   public currentUser = this.authService.currentUser;
 
   async logout() {
