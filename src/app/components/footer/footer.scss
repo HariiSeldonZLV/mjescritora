@@ -1,11 +1,18 @@
 // app/components/footer/footer.scss
-// app/components/footer/footer.scss
+
+$primary-color: #dc4aa4;
+$bg-color: #e9e6e0;
+$text-dark: #2c3e50;
+$text-light: #5a6c7e;
+$white: #ffffff;
+
 .footer {
-  background: #2c3e50;
-  color: #e9e6e0;
+  background: $bg-color;
+  color: $text-dark;
   padding: 60px 20px 20px;
   margin-top: 60px;
   font-family: 'Bitter', 'Playfair Display', serif;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 
   .footer-container {
     max-width: 1200px;
@@ -23,7 +30,7 @@
 
   .footer-col {
     h3 {
-      color: #dc4aa4;
+      color: $primary-color;
       font-size: 1.2rem;
       margin-bottom: 20px;
       font-family: 'Playfair Display', serif;
@@ -36,7 +43,7 @@
         bottom: -8px;
         width: 40px;
         height: 2px;
-        background: #dc4aa4;
+        background: $primary-color;
       }
     }
 
@@ -48,12 +55,12 @@
         margin-bottom: 12px;
 
         a {
-          color: #e9e6e0;
+          color: $text-dark;
           text-decoration: none;
           transition: color 0.3s;
 
           &:hover {
-            color: #dc4aa4;
+            color: $primary-color;
           }
         }
       }
@@ -61,18 +68,24 @@
   }
 
   .footer-logo {
-    margin-bottom: 15px;
-    filter: brightness(0) invert(1);
-    opacity: 0.9;
+  margin-bottom: 20px;
+  height: 45px;
+  width: auto;
+  filter: none;
+  opacity: 1;
+
+  @media (max-width: 768px) {
+    height: 35px;
   }
+}
 
   .footer-desc {
     line-height: 1.6;
     font-size: 0.9rem;
-    color: #bdc3c7;
+    color: $text-light;
   }
 
-  // Redes Sociales (solo dos)
+  // Redes Sociales
   .social-links {
     display: flex;
     flex-direction: column;
@@ -83,10 +96,10 @@
       align-items: center;
       gap: 12px;
       padding: 8px 12px;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(0, 0, 0, 0.03);
       border-radius: 8px;
       text-decoration: none;
-      color: #e9e6e0;
+      color: $text-dark;
       transition: all 0.3s;
 
       .social-icon {
@@ -94,16 +107,16 @@
       }
 
       &:hover {
-        background: rgba(220, 74, 164, 0.2);
+        background: rgba($primary-color, 0.1);
         transform: translateX(5px);
 
         span {
-          color: #dc4aa4;
+          color: $primary-color;
         }
       }
 
-      &.instagram:hover { border-left: 3px solid #e4405f; }
-      &.linkedin:hover { border-left: 3px solid #0a66c2; }
+      &.instagram:hover { border-left: 3px solid $primary-color; }
+      &.linkedin:hover { border-left: 3px solid $primary-color; }
     }
   }
 
@@ -119,30 +132,46 @@
       }
 
       a {
-        color: #e9e6e0;
+        color: $text-dark;
         text-decoration: none;
 
         &:hover {
-          color: #dc4aa4;
+          color: $primary-color;
         }
+      }
+
+      span {
+        color: $text-light;
       }
     }
   }
 
   // Footer bottom
   .footer-bottom {
-    text-align: center;
-    padding-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 
-    p {
-      font-size: 0.8rem;
-      color: #95a5a6;
-      margin-bottom: 5px;
-    }
+  p {
+    font-size: 0.8rem;
+    color: $text-light;
+    margin-bottom: 5px;
+  }
 
-    .footer-credits {
-      font-size: 0.7rem;
+  .footer-credits {
+    font-size: 0.7rem;
+
+    .developer-link {
+      color: $primary-color;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: rgba($primary-color, 0.85); // ← Corregido: rgba en lugar de color.adjust
+        text-decoration: underline;
+      }
     }
   }
+}
 }
